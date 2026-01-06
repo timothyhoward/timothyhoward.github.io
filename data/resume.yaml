@@ -1,0 +1,160 @@
+basics:
+  name: "Timothy Howard"
+  label: "Senior Advisor, Trade Analytics and Strategy"
+  location: "Melbourne, Australia"
+  linkedin: "https://au.linkedin.com/in/timothyjohnhoward"
+  website: "https://timhoward.id.au"
+  github: "https://github.com/timothyhoward"
+
+profile: >-
+  Tim is a dynamic trade and strategy professional with over seven years of public and private sector
+  experience, delivering innovation and impact across international education, trade policy, strategy, and
+  tourism. He holds a Master of International Relations and has strengthened his global perspective through
+  volunteer work in India and Papua New Guinea, living in Germany, and attaining working proficiency in
+  German. At Austrade, he developed Datathing, an award-winning trade analytics platform that earned the
+  2024 APS Data Awards People's Choice Award and is used globally to drive insights and outcomes. Known for
+  his inclusive leadership, strategic mindset, and ability to build strong stakeholder relationships, Tim brings
+  a data-driven approach to advancing Australia's trade and investment interests.
+
+experience_groups:
+  - company: "Australian Trade and Investment Commission (Austrade)"
+    roles:
+      - role: "Senior Advisor, Trade Analytics and Strategy"
+        start: "Jan 2023"
+        end: "Present"
+        location: "Melbourne, Australia"
+        highlights:
+          - "Delivered Datathing, a trade analytics tool, in six months and earned the 2024 APS Data Awards People's Choice Award."
+          - "Acted in EL2 capacity to coordinate analytics priorities and executive reporting."
+          - "Contributed analysis to the Australian Government taskforce responding to US tariffs."
+          - "Improved Pacific trade outcomes through Suva Post support and region planning."
+          - "Strengthened global stakeholder relationships through data-led trade and education advice."
+      - role: "Business Development Manager, Suva (Secondment)"
+        start: "May 2024"
+        end: "Sep 2024"
+        location: "Suva, Fiji"
+        highlights:
+          - "Advised Australian businesses expanding in Fiji and Pacific markets."
+          - "Built and maintained regional networks across industry, government, and trade forums."
+          - "Provided market analysis to guide sector prioritisation and growth pathways."
+  - company: "Tourism Research Australia"
+    roles:
+      - role: "Senior Data Analyst"
+        start: "May 2022"
+        end: "Jan 2023"
+        location: "Melbourne, Australia"
+        highlights:
+          - "Automated tourism factsheets, reducing production time from three days to four minutes."
+          - "Delivered performance insights for tourism and international education stakeholders."
+          - "Represented Austrade at stakeholder events and briefings."
+  - company: "Department of Education and Training, Victoria"
+    roles:
+      - role: "Business Intelligence / Database Solutions Developer"
+        start: "May 2021"
+        end: "May 2022"
+        location: "Melbourne, Australia"
+        highlights:
+          - "Translated NAPLAN trends into policy insights and practical data products."
+          - "Built dashboards for principals to benchmark school performance."
+          - "Partnered with policy teams to align analytics with reform priorities."
+  - company: "Tertiary Education Quality and Standards Agency (TEQSA)"
+    roles:
+      - role: "Data Administrator"
+        start: "Feb 2020"
+        end: "May 2021"
+        location: "Melbourne, Australia"
+        highlights:
+          - "Delivered an automated risk assessment workflow for higher education providers."
+          - "Maintained data infrastructure, business intelligence platforms, and reporting."
+          - "Managed data collections and stakeholder engagement for regulatory reporting."
+      - role: "Information Management Program Officer"
+        start: "Jun 2018"
+        end: "Feb 2020"
+        location: "Melbourne, Australia"
+        highlights:
+          - "Produced policy briefs and improved data quality documentation."
+          - "Supported data enquiries and future-state data technology planning."
+          - "Coordinated team planning and cross-functional delivery."
+  - company: "LeasePlan Australia"
+    roles:
+      - role: "Business Intelligence Consultant / Project Officer"
+        start: "Jan 2017"
+        end: "Jun 2018"
+        location: "Melbourne, Australia"
+        highlights:
+          - "Automated reporting workflows using Excel, SAP, and VBA."
+          - "Delivered insights through financial analysis and reconciliation."
+          - "Standardised procedures and documentation for repeatable delivery."
+  - company: "Ticketek Australia"
+    roles:
+      - role: "Customer Service Representative (Supervisor)"
+        start: "Jul 2013"
+        end: "Sep 2017"
+        location: "Melbourne, Australia"
+        highlights:
+          - "Led event teams at major sporting and cultural events nationwide."
+          - "Managed staff scheduling and real-time issue resolution during events."
+
+education_groups:
+  - institution: "The University of Melbourne"
+    degrees:
+      - degree: "Master of International Relations"
+        start: "2014"
+        end: "2016"
+        location: "Melbourne, Australia"
+      - degree: "Bachelor of Arts"
+        start: "2011"
+        end: "2013"
+        location: "Melbourne, Australia"
+
+volunteering_groups:
+  - organization: "Country Fire Authority (CFA)"
+    roles:
+      - role: "Volunteer Firefighter"
+        dates: "Jan 2025 - Present"
+  - organization: "Australian Trade and Investment Commission (Austrade)"
+    roles:
+      - role: "Social Club Committee"
+        dates: "Nov 2023 - Present"
+      - role: "People Ambassador"
+        dates: "Mar 2023 - Present"
+  - organization: "Australian Electoral Commission (AEC)"
+    roles:
+      - role: "Polling Place Second-in-Charge"
+        dates: "Sep 2013 - Present"
+  - organization: "De La Salle College, Malvern"
+    roles:
+      - role: "Volunteer, St. Joseph's High School"
+        dates: "Nov 2010 - Jan 2011"
+        location: "Keelamudiman, Tamil Nadu, India"
+      - role: "Volunteer, Mainohana Secondary School"
+        dates: "Sep 2009"
+        location: "Bereina, Papua New Guinea"
+
+skills_groups:
+  - name: "Strategy and Leadership"
+    items:
+      - "Enterprise strategy design and delivery"
+      - "Data-enabled decision-making and risk mitigation"
+      - "Cross-agency collaboration and stakeholder influence"
+      - "Executive-level advice and briefing"
+      - "Building and embedding new organisational capabilities"
+  - name: "Technical and Analytical"
+    items:
+      - "Python, SQL, C#, Power BI"
+      - "Data automation, analytics platforms, and dashboarding"
+      - "Designing scalable data products and governance models"
+  - name: "Languages"
+    items:
+      - "English (Native)"
+      - "German (CEFR B1.3)"
+
+awards:
+  - name: "Australia Day Medallion"
+    year: "2025"
+    issued_by: "Australian Trade and Investment Commission (Austrade)"
+    link: "https://www.australiaday.org.au/get-involved/medallions/medallion-recipients"
+  - name: "APS Data Awards - People's Choice Award"
+    year: "2024"
+    issued_by: "Australian Public Service"
+    link: "https://www.apsdataawards.gov.au/2024awards"

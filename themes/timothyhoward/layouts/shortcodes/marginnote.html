@@ -1,0 +1,16 @@
+{{- $count := .Page.Scratch.Get "note-count" | default 0 -}}
+{{- $count = add $count 1 -}}
+{{- .Page.Scratch.Set "note-count" $count -}}
+{{- $id := printf "mn-%d" $count -}}
+{{- $label := .Get "label" | default "⊕" -}}
+{{- $raw := "" -}}
+{{- if .Inner -}}
+  {{- $raw = .Inner -}}
+{{- else -}}
+  {{- $raw = .Get "text" | default (.Get 0) -}}
+{{- end -}}
+{{- $content := $raw | markdownify -}}
+{{- $content = $content | replaceRE "^<p>" "" | replaceRE "</p>$" "" -}}
+<label for="{{ $id }}" class="margin-toggle">{{ $label }}</label>
+<input id="{{ $id }}" class="margin-toggle" type="checkbox">
+<span class="marginnote">{{ $content | safeHTML }}</span>

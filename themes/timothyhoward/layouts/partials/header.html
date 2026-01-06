@@ -1,0 +1,9 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand-mark" href="{{ "/" | relURL }}">{{ .Site.Params.name }}</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="{{ "/" | relURL }}">Home</a>
+      <a href="{{ .Site.Params.cta.resume }}">Resume</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,262 @@
+{{ define "main" }}
+<section class="section section-tight">
+  <div class="container resume-hero">
+    <p class="eyebrow">Resume</p>
+    <div class="resume-header">
+      {{ with .Site.Params.resume.headshot }}
+        <img class="resume-photo" src="{{ . }}" alt="{{ $.Site.Params.name }} headshot">
+      {{ end }}
+      <div class="resume-header-main">
+        <div class="resume-header-top">
+          <div>
+            <h1>{{ .Site.Data.resume.basics.name }}</h1>
+            <p class="lede">{{ .Site.Data.resume.basics.label }}</p>
+            <div class="resume-contact">
+              <div class="resume-contact-line">
+                <span>{{ .Site.Data.resume.basics.location }}</span>
+              </div>
+              <div class="resume-contact-line resume-contact-icons">
+                {{ with .Site.Data.resume.basics.linkedin }}
+                  <a class="resume-icon-link" href="{{ . }}" aria-label="LinkedIn">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="2" y="9" width="4" height="12"/>
+                      <circle cx="4" cy="4" r="2"/>
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    </svg>
+                  </a>
+                {{ end }}
+                {{ with .Site.Data.resume.basics.github }}
+                  <a class="resume-icon-link" href="{{ . }}" aria-label="GitHub">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                  </a>
+                {{ end }}
+                {{ with .Site.Data.resume.basics.website }}
+                  <a class="resume-icon-link" href="{{ . }}" aria-label="Website">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9"/>
+                      <path d="M3 12h18"/>
+                      <path d="M12 3a15 15 0 0 1 0 18"/>
+                    </svg>
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          <div class="resume-actions">
+            {{ with .Site.Params.resume.pdf }}
+              <a class="icon-button" href="{{ . }}" download aria-label="Download PDF">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <path d="M7 10l5 5 5-5"/>
+                  <path d="M12 15V3"/>
+                </svg>
+              </a>
+            {{ end }}
+            <button class="icon-button" type="button" onclick="window.print()" aria-label="Print resume">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <path d="M6 14h12v8H6z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="resume-index" aria-label="Resume sections">
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#volunteering">Volunteering</a>
+      <a href="#awards">Awards</a>
+      <a href="#skills">Skills</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container resume-column">
+    <div class="resume-block">
+      <h2>Profile</h2>
+      <div class="resume-profile">
+        {{ .Site.Data.resume.profile }}
+      </div>
+    </div>
+
+    <div class="resume-block" id="experience">
+      <h2>Experience</h2>
+      {{ range .Site.Data.resume.experience_groups }}
+        {{ $group := . }}
+        <div class="resume-group">
+          <div class="resume-group-head">
+            <h3>
+              {{ with $group.link }}
+                <a class="resume-group-link" href="{{ . }}">
+                  <span>{{ $group.company }}</span>
+                  <svg class="icon resume-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17l10-10"/>
+                    <path d="M10 7h7v7"/>
+                  </svg>
+                </a>
+              {{ else }}
+                {{ $group.company }}
+              {{ end }}
+            </h3>
+          </div>
+          {{ range $group.roles }}
+            <div class="resume-role">
+              <div class="resume-item-head">
+                <div>
+                  <h4>{{ .role }}</h4>
+                  {{ with .location }}<p class="muted resume-subdetail">{{ . }}</p>{{ end }}
+                </div>
+                <div class="resume-dates">{{ .start }} — {{ .end }}</div>
+              </div>
+              {{ with .highlights }}
+                <ul class="resume-highlights">
+                  {{ range . }}<li>{{ . }}</li>{{ end }}
+                </ul>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+
+    <div class="resume-block resume-compact" id="education">
+      <h2>Education</h2>
+      {{ range .Site.Data.resume.education_groups }}
+        {{ $group := . }}
+        <div class="resume-group">
+          <div class="resume-group-head">
+            <h3>
+              {{ with $group.link }}
+                <a class="resume-group-link" href="{{ . }}">
+                  <span>{{ $group.institution }}</span>
+                  <svg class="icon resume-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17l10-10"/>
+                    <path d="M10 7h7v7"/>
+                  </svg>
+                </a>
+              {{ else }}
+                {{ $group.institution }}
+              {{ end }}
+            </h3>
+          </div>
+          {{ range $group.degrees }}
+            <div class="resume-role">
+              <div class="resume-item-head">
+                <div>
+                  <h4>{{ .degree }}</h4>
+                  {{ with .location }}<p class="muted resume-subdetail">{{ . }}</p>{{ end }}
+                  {{ with .majors }}<p class="muted resume-subdetail">Majors: {{ delimit . ", " }}</p>{{ end }}
+                  {{ with .minors }}<p class="muted resume-subdetail">Minors: {{ delimit . ", " }}</p>{{ end }}
+                </div>
+                <div class="resume-dates">{{ .start }} — {{ .end }}</div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+
+    <div class="resume-block resume-compact" id="volunteering">
+      <h2>Volunteering and Other Experience</h2>
+      {{ range .Site.Data.resume.volunteering_groups }}
+        {{ $group := . }}
+        <div class="resume-group">
+          <div class="resume-group-head">
+            <h3>
+              {{ with $group.link }}
+                <a class="resume-group-link" href="{{ . }}">
+                  <span>{{ $group.organization }}</span>
+                  <svg class="icon resume-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17l10-10"/>
+                    <path d="M10 7h7v7"/>
+                  </svg>
+                </a>
+              {{ else }}
+                {{ $group.organization }}
+              {{ end }}
+            </h3>
+          </div>
+          {{ range $group.roles }}
+            <div class="resume-role">
+              <div class="resume-item-head">
+                <div>
+                  <h4>{{ .role }}</h4>
+                  {{ with .location }}<p class="muted resume-subdetail">{{ . }}</p>{{ end }}
+                </div>
+                <div class="resume-dates">{{ .dates }}</div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+
+    {{ with .Site.Data.resume.awards }}
+      <div class="resume-block resume-compact" id="awards">
+        <h2>Awards</h2>
+        {{ range . }}
+          {{ $award := . }}
+          <div class="resume-role">
+            <div class="resume-item-head">
+              <div>
+                <h4>
+                  {{ with $award.link }}
+                    <a class="resume-group-link" href="{{ . }}">
+                      <span>{{ $award.name }}</span>
+                      <svg class="icon resume-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 17l10-10"/>
+                        <path d="M10 7h7v7"/>
+                      </svg>
+                    </a>
+                  {{ else }}
+                    {{ $award.name }}
+                  {{ end }}
+                </h4>
+                {{ with $award.issued_by }}<p class="muted resume-subdetail">Issued by {{ . }}</p>{{ end }}
+                {{ with $award.detail }}<p class="muted resume-subdetail">{{ . }}</p>{{ end }}
+              </div>
+              {{ with $award.year }}<div class="resume-dates">{{ . }}</div>{{ end }}
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    <div class="resume-block" id="skills">
+      <h2>Skills</h2>
+      <div class="resume-skills-groups">
+        {{ range .Site.Data.resume.skills_groups }}
+          {{ $isLanguages := eq .name "Languages" }}
+          <div class="resume-skills-group">
+            <h3>{{ .name }}</h3>
+            <ul class="resume-skills{{ if $isLanguages }} resume-languages{{ end }}">
+              {{ range .items }}
+                {{ if $isLanguages }}
+                  {{ $parts := split . " (" }}
+                  {{ $label := index $parts 0 }}
+                  {{ $level := "" }}
+                  {{ if gt (len $parts) 1 }}
+                    {{ $level = index $parts 1 }}
+                    {{ $level = replaceRE "\\)$" "" $level }}
+                  {{ end }}
+                  <li>
+                    <span class="resume-language-name">{{ $label }}</span>
+                    {{ if $level }}<span class="resume-language-level">{{ $level }}</span>{{ end }}
+                  </li>
+                {{ else }}
+                  <li>{{ . }}</li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

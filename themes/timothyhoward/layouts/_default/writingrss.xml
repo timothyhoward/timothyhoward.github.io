@@ -1,0 +1,26 @@
+{{- $pages := .Pages -}}
+{{- if .IsHome -}}
+  {{- $pages = where .Site.RegularPages "Type" "in" (slice "notes" "posts") -}}
+{{- else if and .IsSection (eq .Section "writing") -}}
+  {{- $pages = where .RegularPagesRecursive "Type" "in" (slice "notes" "posts") -}}
+{{- end -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ .Site.Title }}</title>
+    <link>{{ .Site.BaseURL }}</link>
+    <description>{{ .Site.Params.description }}</description>
+    <atom:link href="{{ .Permalink }}" rel="self" type="application/rss+xml" />
+    <language>{{ .Site.LanguageCode }}</language>
+    {{ range first 20 $pages }}
+      <item>
+        <title>{{ .Title }}</title>
+        <link>{{ .Permalink }}</link>
+        <guid>{{ .Permalink }}</guid>
+        <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+        <description>{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</description>
+      </item>
+    {{ end }}
+  </channel>
+</rss>

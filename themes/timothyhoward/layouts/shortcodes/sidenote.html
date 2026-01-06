@@ -1,0 +1,15 @@
+{{- $count := .Page.Scratch.Get "note-count" | default 0 -}}
+{{- $count = add $count 1 -}}
+{{- .Page.Scratch.Set "note-count" $count -}}
+{{- $id := printf "sn-%d" $count -}}
+{{- $raw := "" -}}
+{{- if .Inner -}}
+  {{- $raw = .Inner -}}
+{{- else -}}
+  {{- $raw = .Get "text" | default (.Get 0) -}}
+{{- end -}}
+{{- $content := $raw | markdownify -}}
+{{- $content = $content | replaceRE "^<p>" "" | replaceRE "</p>$" "" -}}
+<label for="{{ $id }}" class="margin-toggle sidenote-number"></label>
+<input id="{{ $id }}" class="margin-toggle" type="checkbox">
+<span class="sidenote">{{ $content | safeHTML }}</span>

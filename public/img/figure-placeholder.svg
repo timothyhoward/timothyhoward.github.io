@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#ede6dc"/>
+  <rect x="120" y="140" width="960" height="420" fill="#f7f2ea" stroke="#cfc5b8" stroke-width="4"/>
+  <text x="600" y="370" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="36" fill="#3c3530">Figure Placeholder</text>
+</svg>

@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+{{ if or .IsHome (eq .Layout "resume") (and .IsSection (eq .Section "writing")) (and .IsPage (in (slice "notes" "posts") .Type)) }}
+<link rel="stylesheet" href="{{ "css/et-book.css" | relURL }}">
+{{ end }}
+<link rel="stylesheet" href="{{ "css/common.css" | relURL }}">
+{{ if and .IsPage (in (slice "notes" "posts") .Type) }}
+<link rel="stylesheet" href="{{ "css/post.css" | relURL }}">
+{{ end }}
+{{ if eq .Layout "resume" }}
+<link rel="stylesheet" href="{{ "css/resume.css" | relURL }}">
+{{ end }}
+{{ with .Site.Params.colors }}
+<style>
+  :root {
+    {{ with .accent }}--accent: {{ . | safeCSS }};{{ end }}
+    {{ with .accentAlt }}--accent-2: {{ . | safeCSS }};{{ end }}
+    {{ with .bg }}--bg: {{ . | safeCSS }};{{ end }}
+    {{ with .bgAccent }}--bg-accent: {{ . | safeCSS }};{{ end }}
+    {{ with .bgCard }}--bg-card: {{ . | safeCSS }};{{ end }}
+    {{ with .accentTint }}--accent-tint: {{ . | safeCSS }}; --accent-tint-locked: 1;{{ end }}
+    {{ with .accentTintSoft }}--accent-tint-soft: {{ . | safeCSS }}; --accent-tint-soft-locked: 1;{{ end }}
+  }
+</style>
+{{ end }}
+<script src="{{ "js/theme.js" | relURL }}" defer></script>
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | relURL }}">

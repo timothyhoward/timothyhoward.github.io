@@ -1,0 +1,36 @@
+{{ define "main" }}
+<section class="section section-tight">
+  <div class="container">
+    <div class="section-header simple-header">
+      <h1>{{ .Title }}</h1>
+      {{ with .OutputFormats.Get "WritingRSS" }}
+        <a class="rss-link" href="{{ .RelPermalink }}" aria-label="RSS feed">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 4a16 16 0 0 1 16 16"/>
+            <path d="M4 11a9 9 0 0 1 9 9"/>
+            <circle cx="5" cy="19" r="1.5"/>
+          </svg>
+        </a>
+      {{ end }}
+    </div>
+    {{ with .Params.description }}<p class="lede">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container list-stack">
+    {{ $items := where .RegularPagesRecursive "Type" "in" (slice "notes" "posts") }}
+    {{ $paginator := .Paginate $items.ByDate.Reverse }}
+    {{ range $paginator.Pages }}
+      {{ partial "writing-row.html" . }}
+    {{ end }}
+  </div>
+  {{ if gt $paginator.TotalPages 1 }}
+    <div class="container pagination">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">Newer</a>{{ end }}
+      <span>Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">Older</a>{{ end }}
+    </div>
+  {{ end }}
+</section>
+{{ end }}

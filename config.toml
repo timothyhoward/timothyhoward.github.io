@@ -1,0 +1,53 @@
+baseURL = "https://timhoward.id.au/"
+languageCode = "en-au"
+title = "Tim Howard"
+theme = "timothyhoward"
+ [pagination]
+  pagerSize = 10
+enableRobotsTXT = true
+
+[taxonomies]
+tag = "tags"
+
+[outputs]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
+
+[outputFormats]
+  [outputFormats.WritingRSS]
+    mediaType = "application/rss+xml"
+    baseName = "writing"
+    isPlainText = false
+    rel = "alternate"
+
+[params]
+name = "Tim Howard"
+description = "Notes, posts, and a living resume."
+email = "timothyhoward@outlook.com"
+
+[params.resume]
+pdf = "/assets/tim-howard-resume.pdf"
+headshot = "/assets/tim-howard-headshot.jpeg"
+
+[params.social]
+github = "https://github.com/timothyhoward"
+linkedin = "https://www.linkedin.com/in/timothyjohnhoward"
+
+[params.cta]
+resume = "/resume/"
+
+[params.colors]
+accent = "#9B8FFB"
+accentAlt = "#1f2937"
+bg = "#fdfbf5"
+bgAccent = "#f1f1f1"
+bgCard = "#ffffff"
+accentTint = "rgba(11, 95, 255, 0.12)"
+accentTintSoft = "rgba(11, 95, 255, 0.04)"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

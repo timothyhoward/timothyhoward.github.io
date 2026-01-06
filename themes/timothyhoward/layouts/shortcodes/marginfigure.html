@@ -1,0 +1,15 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $caption := "" -}}
+{{- if .Inner -}}
+  {{- $caption = .Inner | markdownify -}}
+{{- else if .Get "caption" -}}
+  {{- $caption = .Get "caption" | markdownify -}}
+{{- end -}}
+{{- $caption = $caption | replaceRE "^<p>" "" | replaceRE "</p>$" "" -}}
+<span class="marginnote margin-figure">
+  <img src="{{ $src | safeURL }}" alt="{{ $alt }}">
+  {{- if $caption }}
+    <span class="margin-figure-caption">{{ $caption | safeHTML }}</span>
+  {{- end }}
+</span>

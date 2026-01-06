@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="{{ if .IsHome }}home-page{{ end }}{{ if and .IsPage (in (slice "notes" "posts") .Type) }} post-page{{ end }}{{ if eq .Layout "resume" }} resume-page{{ end }}{{ if and .IsSection (eq .Section "writing") }} writing-page{{ end }}">
+    <div class="page-bg"></div>
+    {{ partial "header.html" . }}
+    <main class="site-main">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+  </body>
+</html>

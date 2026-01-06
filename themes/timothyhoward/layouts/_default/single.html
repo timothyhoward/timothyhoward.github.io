@@ -1,0 +1,85 @@
+{{ define "main" }}
+{{ if and .IsPage (in (slice "notes" "posts") .Type) }}
+<article>
+  {{ with .Site.GetPage "section" "writing" }}
+    <p class="post-back">
+      <a class="text-link" href="{{ .RelPermalink }}">
+        <span class="post-back-arrow" aria-hidden="true">‹</span>Writing
+      </a>
+    </p>
+  {{ end }}
+  <h1>{{ .Title }}</h1>
+  <section>
+    {{ with .Params.summary }}<p class="subtitle">{{ . }}</p>{{ end }}
+    {{ $showUpdated := and .Lastmod (gt .Lastmod .Date) }}
+    <p class="post-meta sans">
+      {{ .Date.Format "Jan 2, 2006" }} &middot; {{ .ReadingTime }} min read{{ if $showUpdated }} &middot; Updated {{ .Lastmod.Format "Jan 2, 2006" }}{{ end }}
+    </p>
+    {{ $toc := .TableOfContents }}
+    {{ if and $toc (ge (len (findRE "<li>" $toc)) 3) }}
+      <div class="post-toc">
+        <p class="post-toc-title">On this page</p>
+        {{ $toc }}
+      </div>
+    {{ end }}
+    <div class="post-body">
+      {{ .Content }}
+    </div>
+    {{ with .Params.tags }}
+      <p class="tag-row">
+        {{ range . }}
+          <a class="tag-hash" href="{{ printf "/tags/%s/" (urlize .) | relURL }}">#{{ . }}</a>
+        {{ end }}
+      </p>
+    {{ end }}
+    {{ $prev := .PrevInSection }}
+    {{ $next := .NextInSection }}
+    {{ if or $prev $next }}
+      <nav class="post-nav" aria-label="More writing">
+        {{ with $prev }}
+          <a class="post-nav-item" href="{{ .RelPermalink }}">
+            <span class="post-nav-label">Newer</span>
+            <span class="post-nav-title">{{ .Title }}</span>
+          </a>
+        {{ end }}
+        {{ with $next }}
+          <a class="post-nav-item" href="{{ .RelPermalink }}">
+            <span class="post-nav-label">Older</span>
+            <span class="post-nav-title">{{ .Title }}</span>
+          </a>
+        {{ end }}
+      </nav>
+    {{ end }}
+  </section>
+</article>
+{{ else }}
+<section class="section section-tight">
+  <div class="container">
+    <p class="eyebrow">{{ .Section | title }}</p>
+    <h1>{{ .Title }}</h1>
+    <div class="post-meta">
+      <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+      <span>{{ .ReadingTime }} min read</span>
+    </div>
+    {{ with .Params.summary }}<p class="lede">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="prose-wrapper">
+      <div class="prose">
+        {{ .Content }}
+        {{ with .Params.tags }}
+          <div class="tag-row">
+            {{ range . }}
+              <a class="tag" href="{{ printf "/tags/%s/" (urlize .) | relURL }}">{{ . }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
