@@ -2,26 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tim Howard</title>
-    <link>https://timhoward.id.au/</link>
+    <link>http://localhost:1313/</link>
     <description>Notes, posts, and a living resume.</description>
-    <atom:link href="https://timhoward.id.au/" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/" rel="self" type="application/rss+xml" />
     <language>en-au</language>
-    
-      <item>
-        <title>TIL: Hugo Page Bundles</title>
-        <link>https://timhoward.id.au/writing/notes/til-hugo-bundles/</link>
-        <guid>https://timhoward.id.au/writing/notes/til-hugo-bundles/</guid>
-        <pubDate>Mon, 01 Apr 2024 00:00:00 &#43;0000</pubDate>
-        <description>Page bundles keep related assets close to content.</description>
-      </item>
-    
-      <item>
-        <title>Building a TIL Workflow</title>
-        <link>https://timhoward.id.au/writing/posts/building-a-til-workflow/</link>
-        <guid>https://timhoward.id.au/writing/posts/building-a-til-workflow/</guid>
-        <pubDate>Wed, 20 Mar 2024 00:00:00 &#43;0000</pubDate>
-        <description>How I keep ideas lightweight without losing depth.</description>
-      </item>
     
   </channel>
 </rss>

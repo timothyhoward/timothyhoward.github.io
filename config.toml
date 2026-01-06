@@ -38,14 +38,20 @@ linkedin = "https://www.linkedin.com/in/timothyjohnhoward"
 [params.cta]
 resume = "/resume/"
 
+[params.flickr]
+username = "timhoward"
+profile = "https://www.flickr.com/photos/timhoward/"
+limit = 6
+feed = "https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&id=21677412@N06"
+
 [params.colors]
-accent = "#9B8FFB"
+accent = "#B65B4C"
 accentAlt = "#1f2937"
 bg = "#fdfbf5"
 bgAccent = "#f1f1f1"
 bgCard = "#ffffff"
-accentTint = "rgba(11, 95, 255, 0.12)"
-accentTintSoft = "rgba(11, 95, 255, 0.04)"
+accentTint = "rgba(182, 91, 76, 0.12)"
+accentTintSoft = "rgba(182, 91, 76, 0.04)"
 
 [markup]
   [markup.goldmark]

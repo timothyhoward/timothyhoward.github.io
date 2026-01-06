@@ -21,8 +21,12 @@
   <div class="container list-stack">
     {{ $items := where .RegularPagesRecursive "Type" "in" (slice "notes" "posts") }}
     {{ $paginator := .Paginate $items.ByDate.Reverse }}
-    {{ range $paginator.Pages }}
-      {{ partial "writing-row.html" . }}
+    {{ if gt (len $paginator.Pages) 0 }}
+      {{ range $paginator.Pages }}
+        {{ partial "writing-row.html" . }}
+      {{ end }}
+    {{ else }}
+      <p class="muted">No posts or notes yet.</p>
     {{ end }}
   </div>
   {{ if gt $paginator.TotalPages 1 }}
